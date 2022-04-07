@@ -1,6 +1,6 @@
-package br.com.letscode.ecommerce.produto;
+package br.com.letscode.ecommerce.repository;
 
-import br.com.letscode.ecommerce.produto.models.ProdutoEntity;
+import br.com.letscode.ecommerce.model.entity.ProdutoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;

@@ -1,9 +1,11 @@
 package br.com.letscode.ecommerce.produto;
 
-import br.com.letscode.ecommerce.fabricante.FabricanteEntity;
-import br.com.letscode.ecommerce.fabricante.FabricanteRepository;
-import br.com.letscode.ecommerce.produto.models.ProdutoEntity;
-import br.com.letscode.ecommerce.produto.models.ProdutoFiltros;
+import br.com.letscode.ecommerce.model.entity.FabricanteEntity;
+import br.com.letscode.ecommerce.repository.FabricanteRepository;
+import br.com.letscode.ecommerce.model.entity.ProdutoEntity;
+import br.com.letscode.ecommerce.model.exchange.ProdutoFiltrosRequest;
+import br.com.letscode.ecommerce.repository.ProdutoRepository;
+import br.com.letscode.ecommerce.service.ProdutoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -52,7 +54,7 @@ public class ProdutoListagemTest {
 
         produtoRepository.save(produtoEntity);
 
-        ProdutoFiltros filtros = new ProdutoFiltros();
+        ProdutoFiltrosRequest filtros = new ProdutoFiltrosRequest();
 
         Page<ProdutoEntity> resultado = service.buscarTodos(0, 1, filtros);
         Assert.isTrue(resultado.getContent().size()==1, "Resultado esperado: 1  resultado obtido "+ resultado.getContent().size());
@@ -76,7 +78,7 @@ public class ProdutoListagemTest {
 
         produtoRepository.save(produtoEntity);
 
-        ProdutoFiltros filtros = new ProdutoFiltros();
+        ProdutoFiltrosRequest filtros = new ProdutoFiltrosRequest();
         filtros.setNome("Camiseta");
 
         Page<ProdutoEntity> resultado = service.buscarTodos(0, 1, filtros);

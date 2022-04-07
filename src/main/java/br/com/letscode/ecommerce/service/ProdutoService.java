@@ -1,11 +1,13 @@
-package br.com.letscode.ecommerce.produto;
+package br.com.letscode.ecommerce.service;
 
-import br.com.letscode.ecommerce.fabricante.FabricanteEntity;
-import br.com.letscode.ecommerce.fabricante.FabricanteRepository;
-import br.com.letscode.ecommerce.produto.models.OffsetLimitPageable;
-import br.com.letscode.ecommerce.produto.models.ProdutoEntity;
-import br.com.letscode.ecommerce.produto.models.ProdutoFiltros;
-import br.com.letscode.ecommerce.produto.models.ProdutoRequest;
+import br.com.letscode.ecommerce.model.entity.FabricanteEntity;
+import br.com.letscode.ecommerce.repository.FabricanteRepository;
+import br.com.letscode.ecommerce.model.pagination.OffsetLimitPageable;
+import br.com.letscode.ecommerce.model.entity.ProdutoEntity;
+import br.com.letscode.ecommerce.model.exchange.ProdutoFiltrosRequest;
+import br.com.letscode.ecommerce.model.exchange.ProdutoRequest;
+import br.com.letscode.ecommerce.repository.ProdutoRepository;
+import br.com.letscode.ecommerce.specification.ProdutoSpecifications;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,7 +28,7 @@ public class ProdutoService {
 
     public Page<ProdutoEntity> buscarTodos(Integer offset,
                                            Integer limit,
-                                           ProdutoFiltros filtros) {
+                                           ProdutoFiltrosRequest filtros) {
 
         Pageable pageable = new OffsetLimitPageable(offset, limit);
 

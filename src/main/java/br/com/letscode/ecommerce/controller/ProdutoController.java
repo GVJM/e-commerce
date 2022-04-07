@@ -1,12 +1,12 @@
-package br.com.letscode.ecommerce.produto;
+package br.com.letscode.ecommerce.controller;
 
-import br.com.letscode.ecommerce.produto.models.ProdutoEntity;
-import br.com.letscode.ecommerce.produto.models.ProdutoFiltros;
-import br.com.letscode.ecommerce.produto.models.ProdutoRequest;
+import br.com.letscode.ecommerce.service.ProdutoService;
+import br.com.letscode.ecommerce.model.entity.ProdutoEntity;
+import br.com.letscode.ecommerce.model.exchange.ProdutoFiltrosRequest;
+import br.com.letscode.ecommerce.model.exchange.ProdutoRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,7 +32,7 @@ public class ProdutoController {
             @RequestParam(name = "nome", required = false) String nome,
             @RequestParam(name = "valor_maximo", required = false) BigDecimal valorMaximo
     ){
-        ProdutoFiltros filtros = new ProdutoFiltros();
+        ProdutoFiltrosRequest filtros = new ProdutoFiltrosRequest();
         filtros.setNome(nome);
         filtros.setValor(valorMaximo);
 

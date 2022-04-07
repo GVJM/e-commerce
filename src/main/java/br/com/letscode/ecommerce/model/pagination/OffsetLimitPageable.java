@@ -1,4 +1,4 @@
-package br.com.letscode.ecommerce.produto.models;
+package br.com.letscode.ecommerce.model.pagination;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;

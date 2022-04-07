@@ -1,42 +1,22 @@
 package br.com.letscode.ecommerce.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-
-import javax.sql.DataSource;
 
 @Configuration
-@EnableWebSecurity
-public class SecurityConfig
-        extends WebSecurityConfigurerAdapter
-{
+@ConfigurationProperties(prefix = "security.config")
+public class SecurityConfig {
+    public static String PREFIX;
+    public static String KEY;
+    public static Long EXPIRATION;
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .authorizeRequests().anyRequest().authenticated()
-                .and().httpBasic();
+    public void setPrefix(String prefix){
+        PREFIX = prefix;
     }
-
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-            .withUser("raphael").password("{noop}123").roles("USER")
-            .and()
-            .withUser("Vinicius").password("{noop}123").roles("ADMIN");
+    public void setKey(String key){
+        KEY = key;
     }
-
+    public void setExpiration(Long expiration){
+        EXPIRATION = expiration;
+    }
 }

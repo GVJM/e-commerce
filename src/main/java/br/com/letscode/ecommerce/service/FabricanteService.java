@@ -1,5 +1,8 @@
-package br.com.letscode.ecommerce.fabricante;
+package br.com.letscode.ecommerce.service;
 
+import br.com.letscode.ecommerce.model.entity.FabricanteEntity;
+import br.com.letscode.ecommerce.model.exchange.FabricanteRequest;
+import br.com.letscode.ecommerce.repository.FabricanteRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,11 @@
 package br.com.letscode.ecommerce.produto;
 
-import br.com.letscode.ecommerce.fabricante.FabricanteEntity;
-import br.com.letscode.ecommerce.fabricante.FabricanteRepository;
-import br.com.letscode.ecommerce.produto.models.ProdutoEntity;
-import br.com.letscode.ecommerce.produto.models.ProdutoRequest;
+import br.com.letscode.ecommerce.model.entity.FabricanteEntity;
+import br.com.letscode.ecommerce.repository.FabricanteRepository;
+import br.com.letscode.ecommerce.model.entity.ProdutoEntity;
+import br.com.letscode.ecommerce.model.exchange.ProdutoRequest;
+import br.com.letscode.ecommerce.repository.ProdutoRepository;
+import br.com.letscode.ecommerce.service.ProdutoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
