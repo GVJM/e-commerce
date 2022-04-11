@@ -15,16 +15,16 @@ import java.time.ZonedDateTime;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class ShoppingCartRequest {
 
-    private Long user_id;
-    private String user_username;
-    private Long oder_status_id;
+    private Long userId;
+    private String userUsername;
+    private Long oderStatusId;
     private BigDecimal total;
     private ZonedDateTime creationData;
 
     public ShoppingCartRequest(ShoppingCartEntity shoppingCartEntity) {
-        this.user_id = user_id;
-        this.user_username = user_username;
-        this.oder_status_id = oder_status_id;
+        this.userId = userId;
+        this.userUsername = userUsername;
+        this.oderStatusId = oderStatusId;
         this.total = total;
         this.creationData = creationData;
     }
