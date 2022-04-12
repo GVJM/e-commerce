@@ -20,28 +20,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder encoder(){
         return new BCryptPasswordEncoder();
     }
-
-    private static final String[] SWAGGER_WHITELIST = {
-            "/v2/api-docs",
-            "/swagger-resources",
-            "/swagger-resources/**",
-            "/configuration/ui",
-            "/configuration/security",
-            "/swagger-ui.html",
-            "/webjars/**"
-    };
+    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.headers().frameOptions().disable();
         http.cors().and().csrf().disable()
                 .addFilterAfter(new JWTFilter(), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers(SWAGGER_WHITELIST).permitAll()
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers(HttpMethod.POST,"/login").permitAll()
                 .antMatchers(HttpMethod.POST,"/users").permitAll()
-                .antMatchers(HttpMethod.GET,"/users").hasAnyRole("USERS","MANAGERS")
+                .antMatchers(HttpMethod.GET,"/users").hasAnyRole("MANAGERS")
                 .antMatchers("/managers").hasAnyRole("MANAGERS")
+                .antMatchers(HttpMethod.GET,"/users/*").hasAnyRole("USERS", "MANAGERS")
+                .antMatchers(HttpMethod.POST,"/users").hasAnyRole("MANAGERS")
+                .antMatchers(HttpMethod.PUT,"/users/*").hasAnyRole("MANAGERS")
+                .antMatchers(HttpMethod.GET,"/shoppingCart/*").hasAnyRole("USERS", "MANAGERS")
+                .antMatchers(HttpMethod.POST,"/shoppingCart/*").hasAnyRole("USERS", "MANAGERS")
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

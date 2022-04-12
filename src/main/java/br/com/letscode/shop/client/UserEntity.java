@@ -8,7 +8,7 @@ import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "USER")
+@Entity(name = "USERS")
 @Builder
 @Data
 @AllArgsConstructor
@@ -45,7 +45,7 @@ public class UserEntity {
     private ZonedDateTime creation_date;
 
     @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "tab_user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
     @Column(name = "role_id")
     private List<String> roles = new ArrayList<>();
 

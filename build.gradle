@@ -6,7 +6,7 @@ plugins {
 
 group 'br.com.letscode'
 version '1.0-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '17'
 
 configurations {
     compileOnly {
