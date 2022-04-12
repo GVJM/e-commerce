@@ -20,7 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder encoder(){
         return new BCryptPasswordEncoder();
     }
-    
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.headers().frameOptions().disable();
@@ -30,11 +30,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers(HttpMethod.POST,"/login").permitAll()
                 .antMatchers(HttpMethod.POST,"/users").permitAll()
-                .antMatchers(HttpMethod.GET,"/users").hasAnyRole("MANAGERS")
-                .antMatchers("/managers").hasAnyRole("MANAGERS")
-                .antMatchers(HttpMethod.GET,"/users/*").hasAnyRole("USERS", "MANAGERS")
-                .antMatchers(HttpMethod.POST,"/users").hasAnyRole("MANAGERS")
-                .antMatchers(HttpMethod.PUT,"/users/*").hasAnyRole("MANAGERS")
+                .antMatchers(HttpMethod.GET,"/users").hasAnyRole("USERS", "MANAGERS")
+                .antMatchers(HttpMethod.GET,"/produtos/*").hasAnyRole("USERS", "MANAGERS")
+                .antMatchers(HttpMethod.POST,"/produtos").hasAnyRole("MANAGERS")
+                .antMatchers(HttpMethod.PUT,"/produtos/*").hasAnyRole("MANAGERS")
                 .antMatchers(HttpMethod.GET,"/shoppingCart/*").hasAnyRole("USERS", "MANAGERS")
                 .antMatchers(HttpMethod.POST,"/shoppingCart/*").hasAnyRole("USERS", "MANAGERS")
                 .anyRequest().authenticated()
